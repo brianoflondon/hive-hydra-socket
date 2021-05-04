@@ -24,12 +24,25 @@
                     console.log('fail');
                     $('#log').append('<br>' + $('<div/>').text('Error: ' + msg.data.trx_id).html());
                 }
-            })
+            });
 
             $("#hitIt").on("click", function(){
                 console.log($("#url").val());
                 socket.send($("#url").val());
-            })
+            });
+
+            $("#spamIt").on("click", function(){
+                console.log('spam');
+                var message = "";
+                for (i = 0; i < 4; i++) {
+                    message = "HOW_FAST_CAN_THIS_GO "+ i ;
+                    console.log(message);
+                    var spamsocket = io.connect('http://127.0.0.1:5000');
+                    spamsocket.send(message);
+                }
+
+            });
+
 
          });
       </script>
@@ -39,6 +52,7 @@
     <h2>Receive:</h2>
     <input type="text" id="url">
     <button id="hitIt">Submit</button>
+    <button id="spamIt">Spam Me Baby</button>
     <div id="log"></div>
    </body>
 </html>
