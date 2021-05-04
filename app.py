@@ -11,7 +11,6 @@ logging.basicConfig(level=logging.INFO,
                     format=f'%(asctime)s %(levelname)s %(name)s %(threadName)s : %(message)s')
 
 
-
 @app.route('/')
 def index():
     """ Simple page for testing """
@@ -24,7 +23,6 @@ def test_connect():
 @socketio.on('message')
 def url_in(url):
     """ Send a URL and I'll post it to Hive """
-    resp = f'You sent: {url}'
     custom_json = {'url': url}
     trx_id, success = send_notification(custom_json=custom_json)
     success = True
