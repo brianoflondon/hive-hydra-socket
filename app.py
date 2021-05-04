@@ -10,7 +10,7 @@ TEST_NODE = ['http://testnet.openhive.network:8091']
 
 app = Flask(__name__)
 socketio = SocketIO(app)
-
+app.secret_key = os.getenv('SECRET_KEY')
 
 logging.basicConfig(level=logging.INFO,
                     format=f'%(asctime)s %(levelname)s %(name)s %(threadName)s : %(message)s')
