@@ -11,6 +11,7 @@ TEST_NODE = ['http://testnet.openhive.network:8091']
 app = Flask(__name__)
 socketio = SocketIO(app)
 
+
 logging.basicConfig(level=logging.INFO,
                     format=f'%(asctime)s %(levelname)s %(name)s %(threadName)s : %(message)s')
 
