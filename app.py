@@ -4,6 +4,10 @@ from flask_socketio import SocketIO, emit, send
 from beem import Hive
 import os
 
+# Testnet instead of main Hive
+USE_TEST_NODE = True
+TEST_NODE = ['http://testnet.openhive.network:8091']
+
 app = Flask(__name__)
 socketio = SocketIO(app)
 
@@ -46,6 +50,11 @@ def send_notification(custom_json, server_account='', wif=''):
         if wif == '':
             wif = [os.getenv('HIVE_POSTING_KEY')]
             pass
+
+        if USE_TEST_NODE:
+            h = Hive(keys=wif,node=TEST_NODE)
+        else:
+            h = Hive(keys=wif)
         h = Hive(keys=wif)
 
         tx = h.custom_json(id=id, json_data= custom_json,
