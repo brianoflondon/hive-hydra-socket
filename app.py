@@ -25,7 +25,6 @@ def url_in(url):
     """ Send a URL and I'll post it to Hive """
     custom_json = {'url': url}
     trx_id, success = send_notification(custom_json=custom_json)
-    success = True
     custom_json['trx_id'] = trx_id
     custom_json['success'] = success
     emit('response', {'data': custom_json})
