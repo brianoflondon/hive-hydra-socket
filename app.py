@@ -42,7 +42,7 @@ def send_notification(custom_json, server_account='', wif=''):
         HIVE_POSTING_KEY
         """
 
-    id = 'hive-hydra'
+    account_id = 'hive-hydra'
 
     try:
         if server_account == '':
@@ -58,7 +58,7 @@ def send_notification(custom_json, server_account='', wif=''):
             h = Hive(keys=wif)
         h = Hive(keys=wif)
 
-        tx = h.custom_json(id=id, json_data= custom_json,
+        tx = h.custom_json(id=account_id, json_data= custom_json,
                             required_posting_auths=[server_account])
 
         trx_id = tx['trx_id']
