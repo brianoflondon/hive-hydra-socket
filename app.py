@@ -56,7 +56,7 @@ def send_notification(custom_json, server_account='', wif=''):
             h = Hive(keys=wif,node=TEST_NODE)
         else:
             h = Hive(keys=wif)
-        h = Hive(keys=wif)
+
 
         tx = h.custom_json(id=account_id, json_data= custom_json,
                             required_posting_auths=[server_account])
